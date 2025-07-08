@@ -2,7 +2,7 @@ import requests
 import os
 import time
 from multiprocessing import Process
-from datetime import datetime
+from datetime import datetime, timedelta
 import pandas_market_calendars as mcal
 
 # 설정
@@ -26,6 +26,26 @@ DOWNLOAD_CONFIG = {
     "max_retries": 3,
     "retry_delay": 5,
 }
+
+API_KEY = "여기에_인증키_입력"
+START_DATE = "20150101"
+END_DATE = "20250708"
+
+def get_business_days_from_exim(start_date, end_date):
+    business_days = []
+    current = datetime.strptime(start_date, "%Y%m%d")
+    end = datetime.strptime(end_date, "%Y%m%d")
+    while current <= end:
+        date_str = current.strftime("%Y%m%d")
+        url = f"https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={API_KEY}&type=AP01&searchdate={date_str}"
+        try:
+            resp = requests.get(url, timeout=10)
+            if resp.status_code == 200 and resp.json():
+                business_days.append(date_str)
+        except Exception as e:
+            print(f"{date_str} 조회 실패: {e}")
+        current += timedelta(days=1)
+    return business_days
 
 def get_korean_business_days():
     """한국 영업일 가져오기"""
