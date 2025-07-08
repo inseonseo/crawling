@@ -1,0 +1,46 @@
+========================================
+환율전망 PDF 다운로더 사용법
+========================================
+
+📁 공유할 파일들:
+1. parallel_downloader.py (메인 프로그램)
+2. config.py (설정 파일)
+3. requirements.txt (필요한 라이브러리)
+4. install.bat (자동 설치)
+5. run_downloader.bat (실행 파일)
+6. README.md (상세 설명서)
+7. 사용법.txt (이 파일)
+
+🚀 사용자 실행 순서:
+
+1단계: 설치
+- install.bat 파일을 더블클릭
+- Python과 필요한 라이브러리가 자동 설치됨
+
+2단계: 실행
+- run_downloader.bat 파일을 더블클릭
+- 자동으로 다운로드 시작
+
+3단계: 완료 대기
+- 약 3-4시간 소요
+- 3개의 Chrome 창이 열려서 동시에 다운로드
+- 각 창마다 10개씩 총 30개 파일 다운로드
+
+📂 결과물:
+- parallel_reports_worker_1 폴더 (1페이지부터)
+- parallel_reports_worker_2 폴더 (50페이지부터)
+- parallel_reports_worker_3 폴더 (100페이지부터)
+
+⚙️ 설정 변경 (선택사항):
+config.py 파일에서:
+- start_pages: 시작 페이지 변경
+- max_posts_per_worker: 워커당 다운로드 개수 변경
+
+⚠️ 주의사항:
+- 실행 중 컴퓨터 끄지 마세요
+- 안정적인 인터넷 연결 필요
+- 충분한 디스크 공간 필요 (약 200MB)
+
+❓ 문제 발생 시:
+- README.md 파일 참조
+- 오류 메시지와 함께 문의 
